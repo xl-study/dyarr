@@ -1,7 +1,7 @@
 use crate::errors;
 use std::ops::{Index, IndexMut};
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct Dyarr<T> {
     data: Box<[T]>,
     dimensions: Box<[usize]>,
