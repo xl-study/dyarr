@@ -88,7 +88,9 @@ impl<T> Dyarr<T> {
                 return Err(errors::IndexError {
                     reason: format!(
                         "Index {:?} should be in range [{:?}, {:?}]",
-                        index, -len, len
+                        index,
+                        1 - len,
+                        len - 1
                     ),
                 });
             }
@@ -145,8 +147,6 @@ impl<T> Into<Box<[T]>> for Dyarr<T> {
         self.raw()
     }
 }
-
-
 
 #[cfg(test)]
 pub mod tests {
