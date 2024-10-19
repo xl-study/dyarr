@@ -142,12 +142,6 @@ impl<T> IndexMut<&[usize]> for Dyarr<T> {
     }
 }
 
-impl<T> Into<Box<[T]>> for Dyarr<T> {
-    fn into(self) -> Box<[T]> {
-        self.raw()
-    }
-}
-
 #[cfg(test)]
 pub mod tests {
     use super::*;
