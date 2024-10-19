@@ -23,19 +23,19 @@ impl<T> Dyarr<T> {
         }
     }
 
-    pub fn raw(self) -> Box<[T]> {
+    pub fn raw_box(self) -> Box<[T]> {
         self.data
     }
 
-    pub fn raw_ref(&self) -> &Box<[T]> {
+    pub fn raw_ref(&self) -> &[T] {
         &self.data
     }
 
-    pub fn raw_mut(&mut self) -> &mut Box<[T]> {
+    pub fn raw_mut(&mut self) -> &mut [T] {
         &mut self.data
     }
 
-    pub fn dim(&self) -> &Box<[usize]> {
+    pub fn dim(&self) -> &[usize] {
         &self.dimensions
     }
 
