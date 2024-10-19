@@ -12,9 +12,7 @@ impl<T> Dyarr<T> {
         data: Box<[T]>,
         dimensions: Box<[usize]>,
     ) -> Result<Dyarr<T>, errors::IndexError> {
-        if (*dimensions).into_iter().fold(1, |acc, ele| acc * ele)
-            == data.len()
-        {
+        if (*dimensions).iter().product::<usize>() == data.len() {
             Ok(Dyarr { data, dimensions })
         } else {
             Err(errors::IndexError {
@@ -105,11 +103,8 @@ impl<T: Clone> Dyarr<T> {
     pub fn new(init_val: T, dimensions: &[usize]) -> Dyarr<T> {
         let dimensions = dimensions.to_owned().into_boxed_slice();
         Dyarr {
-            data: vec![
-                init_val;
-                dimensions.iter().fold(1, |acc, ele| acc * ele)
-            ]
-            .into_boxed_slice(),
+            data: vec![init_val; dimensions.iter().product()]
+                .into_boxed_slice(),
             dimensions,
         }
     }
